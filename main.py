@@ -1,9 +1,9 @@
 class GameBoard:
     def __init__(self) -> None:
         # Initialize class variables
-        self.Game = [['E', 'E', 'E'], ['E', 'E', 'E'], ['E', 'E', 'E']]
-        self.CurrentTurn = 0
-        self.Players = ['O', 'X']
+        self.Game :list = [['E', 'E', 'E'], ['E', 'E', 'E'], ['E', 'E', 'E']]
+        self.CurrentTurn :int = 0
+        self.Players :list = ['O', 'X']
         self.Turn :str = self.Players[0]
         self.ColMappings :dict = {'a': 0, 'b': 1, 'c': 2}
 
