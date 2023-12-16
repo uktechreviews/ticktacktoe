@@ -1,5 +1,6 @@
 class GameBoard:
     def __init__(self) -> None:
+        # Initialize class variables
         self.Game = [['E', 'E', 'E'], ['E', 'E', 'E'], ['E', 'E', 'E']]
         self.CurrentTurn = 0
         self.Players = ['O', 'X']
@@ -33,11 +34,48 @@ class GameBoard:
             raise IndexError
         # Set space to current player
         self.Game[x][y] = self.Turn
-    
+
     # Check for a winner.
     # Returns: The winner, or empty string if no winner
-    def CheckWin() -> str:
-        # TODO: Implement winning logic
+    def CheckWin(self) -> str:
+        # Check rows for winner
+        # Iterate through each row
+        for i in range(0,3):
+            # Convert the row to a set
+            row :set = set(self.Game[i])
+            # Check if set length == 1 (all elements in row are the same)
+            if len(row) == 1:
+                # Get the single element from the set
+                elem = row.pop()
+                # If element is not E, we have 3 in a row, return winner
+                if (elem != 'E'):
+                    return elem
+        # Check columns for winner
+        # Iterate through each col:
+        for colIndex in range (0,3):
+            # create empty set
+            colSet :set = {}
+            # Add all elements in column to set
+            for r in range(0,3):
+                colSet.add(self.Game[r][colIndex])
+            # Check if set length == 1 (all elements in col are the same)
+            if len(colSet) == 1:
+                elem = colSet.pop()
+                if (elem != 'E'):
+                    return elem
+        # Check diagonals
+        # Create sets
+        diagSet1 :set = {self.Game[0][0], self.Game[1][1], self.Game[2][2]}
+        diagSet2 :set = {self.Game[0][2], self.Game[1][1], self.Game[2][0]}
+        # Check if set lengtha == 1 (all elements in diagonals are the same)
+        if len(diagSet1) == 1:
+            elem = diagSet1.pop()
+            if (elem != 'E'):
+                return elem
+        if len(diagSet2) == 1:
+            elem = diagSet2.pop()
+            if (elem != 'E'):
+                return elem
         return ""
 
     # Take a turn
