@@ -6,7 +6,7 @@ class GameBoard:
         self.Players = ['O', 'X']
         self.Turn :str = self.Players[0]
         self.ColMappings :dict = {'a': 0, 'b': 1, 'c': 2}
-    
+
     # Print the gameboard
     def ShowGameboard(self) -> None:
         # "Clear" screen
@@ -54,10 +54,12 @@ class GameBoard:
         # Iterate through each col:
         for colIndex in range (0,3):
             # create empty set
-            colSet :set = {}
+            colSet :list = []
             # Add all elements in column to set
             for r in range(0,3):
-                colSet.add(self.Game[r][colIndex])
+                colSet.append(self.Game[r][colIndex])
+            # Convert to a set
+            colSet = set(colSet)
             # Check if set length == 1 (all elements in col are the same)
             if len(colSet) == 1:
                 elem = colSet.pop()
@@ -129,4 +131,5 @@ if __name__ == "__main__":
         winner = game.CheckWin()
 
     # Announce winner
+    game.ShowGameboard()
     print(f"\n\nCongratulations {winner}. You win!!")
