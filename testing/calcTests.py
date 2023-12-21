@@ -21,7 +21,7 @@ class TestCalc(unittest.TestCase):
         self.assertEqual(Calc.MyCalculator(-8,5, '-'), -13)
         self.assertEqual(Calc.MyCalculator(-8,-5, '-'), -3)
 
-    # Add Tests for Multiplication and Division (incl divide by 0)
+    # TODO: Add Tests for Multiplication and Division (incl divide by 0)
 
     def test_invalid_numbers(self):
         self.assertRaises(TypeError, Calc.MyCalculator, "g", 1, '+')
